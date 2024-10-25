@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Metro Admin</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <div class="flex h-screen bg-gray-100">
+      <!-- Side Menu -->
+      <aside class="w-64 bg-gray-800 text-white p-4">
+        <h1 class="text-2xl font-bold mb-6">Metro Admin</h1>
+        <nav>
+          <%= link_to root_path, class: "block py-2 px-4 text-sm hover:bg-gray-700 rounded" do %>
+            <i class="fas fa-home mr-2"></i> Dashboard
+          <% end %>
+          <%= link_to metro_lines_path, class: "block py-2 px-4 text-sm hover:bg-gray-700 rounded" do %>
+            <i class="fas fa-subway mr-2"></i> Lines
+          <% end %>
+          <%= link_to stations_path, class: "block py-2 px-4 text-sm hover:bg-gray-700 rounded" do %>
+            <i class="fas fa-map-marker-alt mr-2"></i> Stations
+          <% end %>
+          <%= link_to blocks_path, class: "block py-2 px-4 text-sm hover:bg-gray-700 rounded" do %>
+            <i class="fas fa-cube mr-2"></i> Blocks
+          <% end %>
+          <%= link_to users_path, class: "block py-2 px-4 text-sm hover:bg-gray-700 rounded" do %>
+            <i class="fas fa-users mr-2"></i> Users
+          <% end %>
+          <%= link_to groups_path, class: "block py-2 px-4 text-sm hover:bg-gray-700 rounded" do %>
+            <i class="fas fa-user-friends mr-2"></i> Groups
+          <% end %>
+          <%= link_to workflows_path, class: "block py-2 px-4 text-sm hover:bg-gray-700 rounded" do %>
+            <i class="fas fa-project-diagram mr-2"></i> Workflow
+          <% end %>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="flex-1 p-8 overflow-auto">
+        <h2 class="text-3xl font-bold mb-6">Metro Administration</h2>
+        <div class="bg-white rounded-lg shadow p-6">
+          <%= yield %>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

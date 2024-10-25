@@ -1,0 +1,37 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold text-gray-900">Categories</h1>
+    <%= link_to 'New Category', new_category_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+  </div>
+
+  <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Parent</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sort Order</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        <% @categories.each do |category| %>
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap"><%= category.name %></td>
+            <td class="px-6 py-4 whitespace-nowrap"><%= truncate(category.description, length: 50) %></td>
+            <td class="px-6 py-4 whitespace-nowrap"><%= category.parent&.name || 'None' %></td>
+            <td class="px-6 py-4 whitespace-nowrap"><%= category.is_active ? 'Active' : 'Inactive' %></td>
+            <td class="px-6 py-4 whitespace-nowrap"><%= category.sort_order %></td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+              <%= link_to 'Show', category, class: "text-indigo-600 hover:text-indigo-900 mr-2" %>
+              <%= link_to 'Edit', edit_category_path(category), class: "text-indigo-600 hover:text-indigo-900 mr-2" %>
+              <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "text-red-600 hover:text-red-900" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="max-w-2xl mx-auto">
+    <h1 class="text-3xl font-bold text-gray-900 mb-6">Edit View</h1>
+
+    <%= render 'form', view: @view %>
+
+    <div class="mt-6">
+      <%= link_to 'Show', @view, class: "text-indigo-600 hover:text-indigo-900 mr-4" %>
+      <%= link_to 'Back', views_path, class: "text-indigo-600 hover:text-indigo-900" %>
+    </div>
+  </div>
+</div>

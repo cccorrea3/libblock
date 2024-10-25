@@ -1,0 +1,43 @@
+<h3 class="text-xl font-semibold mb-4">Station Details</h3>
+
+<div class="bg-white shadow overflow-hidden sm:rounded-lg">
+  <div class="px-4 py-5 sm:px-6">
+    <h3 class="text-lg leading-6 font-medium text-gray-900">
+      <%= @station.name %>
+    </h3>
+  </div>
+  <div class="border-t border-gray-200">
+    <dl>
+      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">
+          Associated Lines
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <% @station.metro_lines.each do |line| %>
+            <span class="inline-block w-4 h-4 rounded-full mr-1" style="background-color: <%= line.color %>;"></span>
+            <%= line.name %>
+          <% end %>
+        </dd>
+      </div>
+      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">
+          Blocks
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <ul class="border border-gray-200 rounded-md divide-y divide-gray-200">
+            <% @station.blocks.each do |block| %>
+              <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                <%= block.title %>
+              </li>
+            <% end %>
+          </ul>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</div>
+
+<div class="mt-4">
+  <%= link_to 'Edit', edit_station_path(@station), class: 'bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded' %>
+  <%= link_to 'Back', stations_path, class: 'bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded ml-2' %>
+</div>

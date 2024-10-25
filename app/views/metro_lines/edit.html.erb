@@ -1,0 +1,31 @@
+<h3 class="text-xl font-semibold mb-4">Edit Metro Line</h3>
+
+<%= form_with(model: @metro_line, local: true, class: 'space-y-4') do |form| %>
+  <% if @metro_line.errors.any? %>
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+      <strong class="font-bold">Error!</strong>
+      <ul>
+        <% @metro_line.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, class: 'block text-sm font-medium text-gray-700' %>
+    <%= form.text_field :name, class: 'mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md' %>
+  </div>
+
+  <div>
+    <%= form.label :color, class: 'block text-sm font-medium text-gray-700' %>
+    <%= form.color_field :color, class: 'mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md' %>
+  </div>
+
+  <div>
+    <%= form.submit 'Update Metro Line', class: 'inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' %>
+  </div>
+<% end %>
+
+<%= link_to 'Show', @metro_line, class: 'mt-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2' %>
+<%= link_to 'Back', metro_lines_path, class: 'mt-4 inline-block bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded' %>

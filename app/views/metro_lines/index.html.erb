@@ -1,0 +1,28 @@
+<h3 class="text-xl font-semibold mb-4">Metro Lines</h3>
+
+<%= link_to 'New Metro Line', new_metro_line_path, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 inline-block' %>
+
+<table class="min-w-full bg-white">
+  <thead>
+    <tr>
+      <th class="py-2 px-4 border-b">Name</th>
+      <th class="py-2 px-4 border-b">Color</th>
+      <th class="py-2 px-4 border-b">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @metro_lines.each do |metro_line| %>
+      <tr>
+        <td class="py-2 px-4 border-b"><%= metro_line.name %></td>
+        <td class="py-2 px-4 border-b">
+          <div class="w-6 h-6 rounded-full" style="background-color: <%= metro_line.color %>;"></div>
+        </td>
+        <td class="py-2 px-4 border-b">
+          <%= link_to 'View', metro_line, class: 'text-blue-500 hover:text-blue-700' %>
+          <%= link_to 'Edit', edit_metro_line_path(metro_line), class: 'text-yellow-500 hover:text-yellow-700 ml-2' %>
+          <%= link_to 'Delete', metro_line, method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-red-500 hover:text-red-700 ml-2' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
