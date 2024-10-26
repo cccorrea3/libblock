@@ -17,7 +17,7 @@ class WorkflowsController < ApplicationController
     if @workflow.save
       redirect_to @workflow, notice: 'Workflow was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -28,7 +28,7 @@ class WorkflowsController < ApplicationController
     if @workflow.update(workflow_params)
       redirect_to @workflow, notice: 'Workflow was successfully updated.'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
