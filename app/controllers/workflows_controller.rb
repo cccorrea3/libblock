@@ -44,6 +44,6 @@ class WorkflowsController < ApplicationController
   end
 
   def workflow_params
-    params.require(:workflow).permit(:name, :status, steps: [])
+    params.require(:workflow).permit(:name, :description, :status, steps: [])
   end
 end
