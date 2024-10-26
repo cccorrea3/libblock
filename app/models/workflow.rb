@@ -6,6 +6,6 @@ class Workflow < ApplicationRecord
   serialize :steps, Array
 
   def steps_count
-    steps.size
+    steps&.size || 0
   end
 end
