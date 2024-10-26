@@ -3,9 +3,9 @@ class Workflow < ApplicationRecord
   validates :status, presence: true
   validates :steps, presence: true
 
-  store :steps, accessors: [], coder: JSON
+  serialize :steps, Array
 
   def steps_count
-    (steps || []).size
+    steps.is_a?(Array) ? steps.size : 0
   end
 end
