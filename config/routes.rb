@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resources :applications
   resources :labels
   resources :categories
+  resources :workflows
 end

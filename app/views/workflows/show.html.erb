@@ -1,0 +1,25 @@
+<div class="container mx-auto px-4">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold">Workflow Details</h1>
+    <%= link_to 'Edit', edit_workflow_path(@workflow), class: "bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded" %>
+  </div>
+
+  <div class="bg-white shadow-md rounded my-6 p-6">
+    <div class="mb-4">
+      <h2 class="text-xl font-semibold mb-2">Name</h2>
+      <p class="text-gray-700"><%= @workflow.name %></p>
+    </div>
+
+    <div class="mb-4">
+      <h2 class="text-xl font-semibold mb-2">Description</h2>
+      <p class="text-gray-700"><%= @workflow.description %></p>
+    </div>
+
+    <div class="mb-4">
+      <h2 class="text-xl font-semibold mb-2">Workflow Type</h2>
+      <p class="text-gray-700"><%= @workflow.workflowtype %></p>
+    </div>
+
+    <%= link_to 'Back to Workflows', workflows_path, class: "bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" %>
+  </div>
+</div>
