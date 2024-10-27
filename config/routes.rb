@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   resources :blocks
   resources :users
   resources :groups
-  resources :workflows
   resources :environments
   resources :roles
   resources :views

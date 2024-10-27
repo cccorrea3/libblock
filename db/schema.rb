@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_26_200801) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_26_205101) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,12 +67,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_26_200801) do
   create_table "groups", force: :cascade do |t|
     t.string "name", null: false
     t.string "group_type", null: false
-    t.bigint "workflow_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "type_group"
     t.text "description"
-    t.index ["workflow_id"], name: "index_groups_on_workflow_id"
   end
 
   create_table "groups_users", id: false, force: :cascade do |t|
@@ -151,17 +149,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_26_200801) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "workflows", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "steps", default: [], array: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "description"
-    t.string "status"
-    t.index ["name"], name: "index_workflows_on_name", unique: true
-  end
-
   add_foreign_key "blocks", "stations"
-  add_foreign_key "groups", "workflows"
   add_foreign_key "users", "roles"
 end

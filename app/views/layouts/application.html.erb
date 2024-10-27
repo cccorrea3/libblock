@@ -42,10 +42,7 @@
             <i class="fas fa-user-friends mr-2"></i>
             <span>Groups</span>
           <% end %>
-          <%= link_to workflows_path, class: "flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 rounded-lg mb-2" do %>
-            <i class="fas fa-project-diagram mr-2"></i>
-            <span>Workflow</span>
-          <% end %>
+          
           <div class="relative" data-controller="dropdown">
             <button class="flex items-center justify-between w-full px-4 py-2 text-gray-300 hover:bg-gray-700 rounded-lg" data-action="click->dropdown#toggle">
               <div class="flex items-center">
@@ -57,7 +54,7 @@
             <div class="hidden pl-4 mt-2 space-y-2" data-dropdown-target="menu">
               <%= link_to 'Environment', environments_path , class: 'block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 rounded-lg' %>
               <%= link_to 'Role', roles_path , class: 'block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 rounded-lg' %>
-              <%= link_to 'Workflows', workflows_path , class: 'block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 rounded-lg' %>
+    
               <%= link_to 'Views', views_path, class: 'block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 rounded-lg' %>
               <%= link_to 'Applications', applications_path , class: 'block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 rounded-lg' %>
               <%= link_to 'Labels', labels_path, class: 'block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 rounded-lg' %>
