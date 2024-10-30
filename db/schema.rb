@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_27_073001) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_29_205601) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,12 +28,24 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_27_073001) do
   create_table "blocks", force: :cascade do |t|
     t.string "title", null: false
     t.text "description"
-    t.string "status", null: false
-    t.bigint "station_id", null: false
+    t.string "roles", default: [], array: true
+    t.string "pre_conditions", default: [], array: true
+    t.string "post_conditions", default: [], array: true
+    t.string "main_flow", default: [], array: true
+    t.string "alternative_flow", default: [], array: true
+    t.string "functional_requests", default: [], array: true
+    t.string "non_functional_requests", default: [], array: true
+    t.string "priority"
+    t.string "status"
+    t.text "notes"
+    t.string "associated_stations", default: [], array: true
+    t.bigint "environment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "priority"
-    t.index ["station_id"], name: "index_blocks_on_station_id"
+    t.index ["associated_stations"], name: "index_blocks_on_associated_stations", using: :gin
+    t.index ["environment_id"], name: "index_blocks_on_environment_id"
+    t.index ["priority"], name: "index_blocks_on_priority"
+    t.index ["status"], name: "index_blocks_on_status"
   end
 
   create_table "blocks_stations", id: false, force: :cascade do |t|
@@ -157,6 +169,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_27_073001) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "blocks", "stations"
+  add_foreign_key "blocks", "environments"
   add_foreign_key "users", "roles"
 end

@@ -2,7 +2,7 @@ class BlocksController < ApplicationController
   before_action :set_block, only: [:show, :edit, :update, :destroy]
 
   def index
-    @blocks = Block.includes(:station).all
+    @blocks = Block.all
   end
 
   def show
@@ -44,6 +44,9 @@ class BlocksController < ApplicationController
   end
 
   def block_params
-    params.require(:block).permit(:title, :description, :status, :station_id, :priority)
+    params.require(:block).permit(:title, :description, :priority, :status, :notes, :environment_id,
+                                  roles: [], pre_conditions: [], post_conditions: [], main_flow: [],
+                                  alternative_flow: [], functional_requests: [], non_functional_requests: [],
+                                  associated_stations: [])
   end
 end
