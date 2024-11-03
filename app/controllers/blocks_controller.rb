@@ -44,9 +44,9 @@ class BlocksController < ApplicationController
   end
 
   def block_params
-    params.require(:block).permit(:title, :description, :priority, :status, :notes, :environment_id,
-                                  roles: [], pre_conditions: [], post_conditions: [], main_flow: [],
-                                  alternative_flow: [], functional_requests: [], non_functional_requests: [],
-                                  associated_stations: [])
+    params.require(:block).permit(:title, :description, :priority, :status, :notes,
+                                  roles: [], pre_conditions: [], post_conditions: [],
+                                  main_flow: [], alternative_flow: [], functional_requests: [],
+                                  non_functional_requests: [], associated_stations: [])
   end
 end

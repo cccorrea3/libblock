@@ -1,99 +1,66 @@
-<div class="container mx-auto px-4 py-8">
-  <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-    <h1 class="text-3xl font-bold mb-6"><%= @block.title %></h1>
+<div class="container mx-auto px-4">
+  <h1 class="text-2xl font-bold mb-4"><%= @block.title %></h1>
 
-    <div class="mb-4">
-      <strong class="block text-gray-700 text-sm font-bold mb-2">Description:</strong>
-      <p class="text-gray-700"><%= @block.description %></p>
+  <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+    <div class="px-4 py-5 sm:px-6">
+      <h3 class="text-lg leading-6 font-medium text-gray-900">Block Details</h3>
     </div>
+    <div class="border-t border-gray-200">
+      <dl>
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Description</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @block.description %></dd>
+        </div>
+        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Priority</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @block.priority %></dd>
+        </div>
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Status</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @block.status %></dd>
+        </div>
+        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Roles</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @block.roles.join(', ') %></dd>
+        </div>
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Pre-conditions</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @block.pre_conditions %></dd>
+        </div>
+        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Post-conditions</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @block.post_conditions %></dd>
+        </div>
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Main Flow</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @block.main_flow %></dd>
+        </div>
+        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Alternative Flow</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @block.alternative_flow %></dd>
+        </div>
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Functional Requests</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @block.functional_requests %></dd>
+        </div>
+        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Non-functional Requests</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @block.non_functional_requests %></dd>
+        </div>
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Notes</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @block.notes %></dd>
+        </div>
+        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm font-medium text-gray-500">Associated Stations</dt>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @block.associated_stations.join(', ') %></dd>
+        </div>
+      </dl>
+    </div>
+  </div>
 
-    <div class="mb-4">
-      <strong class="block text-gray-700 text-sm font-bold mb-2">Priority:</strong>
-      <p class="text-gray-700"><%= @block.priority %></p>
-    </div>
-
-    <div class="mb-4">
-      <strong class="block text-gray-700 text-sm font-bold mb-2">Status:</strong>
-      <p class="text-gray-700"><%= @block.status %></p>
-    </div>
-
-    <div class="mb-4">
-      <strong class="block text-gray-700 text-sm font-bold mb-2">Roles:</strong>
-      <p class="text-gray-700"><%= @block.roles.join(", ") %></p>
-    </div>
-
-    <div class="mb-4">
-      <strong class="block text-gray-700 text-sm font-bold mb-2">Pre-conditions:</strong>
-      <ul class="list-disc list-inside text-gray-700">
-        <% @block.pre_conditions.each do |condition| %>
-          <li><%= condition %></li>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class="mb-4">
-      <strong class="block text-gray-700 text-sm font-bold mb-2">Post-conditions:</strong>
-      <ul class="list-disc list-inside text-gray-700">
-        <% @block.post_conditions.each do |condition| %>
-          <li><%= condition %></li>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class="mb-4">
-      <strong class="block text-gray-700 text-sm font-bold mb-2">Main Flow:</strong>
-      <ol class="list-decimal list-inside text-gray-700">
-        <% @block.main_flow.each do |step| %>
-          <li><%= step %></li>
-        <% end %>
-      </ol>
-    </div>
-
-    <div class="mb-4">
-      <strong class="block text-gray-700 text-sm font-bold mb-2">Alternative Flow:</strong>
-      <ol class="list-decimal list-inside text-gray-700">
-        <% @block.alternative_flow.each do |step| %>
-          <li><%= step %></li>
-        <% end %>
-      </ol>
-    </div>
-
-    <div class="mb-4">
-      <strong class="block text-gray-700 text-sm font-bold mb-2">Functional Requests:</strong>
-      <ul class="list-disc list-inside text-gray-700">
-        <% @block.functional_requests.each do |request| %>
-          <li><%= request %></li>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class="mb-4">
-      <strong class="block text-gray-700 text-sm font-bold mb-2">Non-Functional Requests:</strong>
-      <ul class="list-disc list-inside text-gray-700">
-        <% @block.non_functional_requests.each do |request| %>
-          <li><%= request %></li>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class="mb-4">
-      <strong class="block text-gray-700 text-sm font-bold mb-2">Notes:</strong>
-      <p class="text-gray-700"><%= @block.notes %></p>
-    </div>
-
-    <div class="mb-4">
-      <strong class="block text-gray-700 text-sm font-bold mb-2">Associated Stations:</strong>
-      <p class="text-gray-700"><%= @block.associated_stations.join(", ") %></p>
-    </div>
-
-    <div class="mb-4">
-      <strong class="block text-gray-700 text-sm font-bold mb-2">Environment:</strong>
-      <p class="text-gray-700"><%= @block.environment.name %></p>
-    </div>
-
-    <div class="flex items-center justify-start mt-6">
-      <%= link_to 'Edit', edit_block_path(@block), class: "bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded mr-2" %>
-      <%= link_to 'Back', blocks_path, class: "bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" %>
-    </div>
+  <div class="mt-4">
+    <%= link_to 'Edit', edit_block_path(@block), class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2' %>
+    <%= link_to 'Back', blocks_path, class: 'bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded' %>
   </div>
 </div>
