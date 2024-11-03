@@ -1,5 +1,6 @@
 class BlocksController < ApplicationController
   before_action :set_block, only: [:show, :edit, :update, :destroy]
+  before_action :set_roles, only: [:new, :create, :edit, :update]
 
   def index
     @blocks = Block.all
@@ -43,10 +44,14 @@ class BlocksController < ApplicationController
     @block = Block.find(params[:id])
   end
 
+  def set_roles
+    @roles = Role.all
+  end
+
   def block_params
     params.require(:block).permit(:title, :description, :priority, :status, :notes,
-                                  roles: [], pre_conditions: [], post_conditions: [],
-                                  main_flow: [], alternative_flow: [], functional_requests: [],
-                                  non_functional_requests: [], associated_stations: [])
+                                  :pre_conditions, :post_conditions, :main_flow, :alternative_flow,
+                                  :functional_requests, :non_functional_requests,
+                                  associated_stations: [], role_ids: [])
   end
 end

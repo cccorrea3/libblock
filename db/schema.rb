@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_03_113801) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_03_202101) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,7 +28,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_03_113801) do
   create_table "blocks", force: :cascade do |t|
     t.string "title", null: false
     t.text "description"
-    t.string "roles", default: [], array: true
     t.string "pre_conditions", default: [], array: true
     t.string "post_conditions", default: [], array: true
     t.string "main_flow", default: [], array: true
@@ -46,6 +45,13 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_03_113801) do
     t.index ["environment_id"], name: "index_blocks_on_environment_id"
     t.index ["priority"], name: "index_blocks_on_priority"
     t.index ["status"], name: "index_blocks_on_status"
+  end
+
+  create_table "blocks_roles", id: false, force: :cascade do |t|
+    t.bigint "block_id"
+    t.bigint "role_id"
+    t.index ["block_id"], name: "index_blocks_roles_on_block_id"
+    t.index ["role_id"], name: "index_blocks_roles_on_role_id"
   end
 
   create_table "blocks_stations", id: false, force: :cascade do |t|
