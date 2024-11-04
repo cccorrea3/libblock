@@ -20,40 +20,36 @@
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @block.status %></dd>
         </div>
         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">Roles</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @block.roles.pluck(:name).join(', ') %></dd>
-        </div>
-        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm font-medium text-gray-500">Pre-conditions</dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @block.pre_conditions %></dd>
         </div>
-        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm font-medium text-gray-500">Post-conditions</dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @block.post_conditions %></dd>
         </div>
-        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm font-medium text-gray-500">Main Flow</dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @block.main_flow %></dd>
         </div>
-        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm font-medium text-gray-500">Alternative Flow</dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @block.alternative_flow %></dd>
         </div>
-        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm font-medium text-gray-500">Functional Requests</dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @block.functional_requests %></dd>
         </div>
-        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm font-medium text-gray-500">Non-functional Requests</dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @block.non_functional_requests %></dd>
         </div>
-        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm font-medium text-gray-500">Notes</dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @block.notes %></dd>
         </div>
-        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm font-medium text-gray-500">Associated Stations</dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @block.associated_stations.join(', ') %></dd>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"><%= @block.associated_stations %></dd>
         </div>
       </dl>
     </div>

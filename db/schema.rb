@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_03_202101) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_04_202701) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,32 +26,20 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_03_202101) do
   end
 
   create_table "blocks", force: :cascade do |t|
-    t.string "title", null: false
+    t.string "title"
     t.text "description"
-    t.string "pre_conditions", default: [], array: true
-    t.string "post_conditions", default: [], array: true
-    t.string "main_flow", default: [], array: true
-    t.string "alternative_flow", default: [], array: true
-    t.string "functional_requests", default: [], array: true
-    t.string "non_functional_requests", default: [], array: true
     t.string "priority"
     t.string "status"
+    t.text "pre_conditions"
+    t.text "post_conditions"
+    t.text "main_flow"
+    t.text "alternative_flow"
+    t.text "functional_requests"
+    t.text "non_functional_requests"
     t.text "notes"
-    t.string "associated_stations", default: [], array: true
-    t.bigint "environment_id"
+    t.text "associated_stations"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["associated_stations"], name: "index_blocks_on_associated_stations", using: :gin
-    t.index ["environment_id"], name: "index_blocks_on_environment_id"
-    t.index ["priority"], name: "index_blocks_on_priority"
-    t.index ["status"], name: "index_blocks_on_status"
-  end
-
-  create_table "blocks_roles", id: false, force: :cascade do |t|
-    t.bigint "block_id"
-    t.bigint "role_id"
-    t.index ["block_id"], name: "index_blocks_roles_on_block_id"
-    t.index ["role_id"], name: "index_blocks_roles_on_role_id"
   end
 
   create_table "blocks_stations", id: false, force: :cascade do |t|
@@ -175,6 +163,5 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_03_202101) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "blocks", "environments"
   add_foreign_key "users", "roles"
 end

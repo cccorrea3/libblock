@@ -27,19 +27,7 @@
 
   <div>
     <%= form.label :status, class: "block text-sm font-medium text-gray-700" %>
-    <%= form.select :status, options_for_select(['To Do', 'In Progress', 'Done'], block.status), {}, class: "mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500  focus:border-indigo-500 sm:text-sm" %>
-  </div>
-
-  <div>
-    <%= form.label :roles, class: "block text-sm font-medium text-gray-700" %>
-    <div class="mt-1">
-      <%= form.collection_check_boxes :role_ids, @roles, :id, :name do |b| %>
-        <div class="flex items-center">
-          <%= b.check_box class: "focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" %>
-          <%= b.label class: "ml-2 block text-sm text-gray-900" %>
-        </div>
-      <% end %>
-    </div>
+    <%= form.select :status, options_for_select(['To Do', 'In Progress', 'Done'], block.status), {}, class: "mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
   </div>
 
   <div>
@@ -56,6 +44,8 @@
     <%= form.label :main_flow, class: "block text-sm font-medium text-gray-700" %>
     <%= form.text_area :main_flow, rows: 3, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
   </div>
+
+  
 
   <div>
     <%= form.label :alternative_flow, class: "block text-sm font-medium text-gray-700" %>
@@ -79,8 +69,7 @@
 
   <div>
     <%= form.label :associated_stations, class: "block text-sm font-medium text-gray-700" %>
-    <%= form.text_field :associated_stations, value: block.associated_stations.join(', '), class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
-    <p class="mt-2 text-sm text-gray-500">Enter associated stations separated by commas</p>
+    <%= form.text_area :associated_stations, rows: 3, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
   </div>
 
   <div>
