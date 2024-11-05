@@ -12,7 +12,6 @@ class CreateBlocks < ActiveRecord::Migration[7.2]
       t.text :functional_requests
       t.text :non_functional_requests
       t.text :notes
-      t.text :associated_stations
 
       t.timestamps
     end
