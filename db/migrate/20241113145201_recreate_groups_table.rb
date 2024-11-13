@@ -6,7 +6,6 @@ class RecreateGroupsTable < ActiveRecord::Migration[7.2]
       t.string :name, null: false
       t.string :group_type
       t.text :description
-      t.string :type_group
 
       t.timestamps
     end
