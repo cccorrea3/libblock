@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_04_205701) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_15_083401) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -71,11 +71,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_04_205701) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name", null: false
-    t.string "group_type", null: false
+    t.string "group_type"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "type_group"
-    t.text "description"
   end
 
   create_table "groups_users", id: false, force: :cascade do |t|
@@ -161,6 +160,4 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_04_205701) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_foreign_key "users", "roles"
 end
