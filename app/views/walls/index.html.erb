@@ -1,0 +1,35 @@
+<div class="container mx-auto px-4">
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="text-2xl font-bold">Walls</h1>
+    <%= link_to 'New Wall', new_wall_path, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' %>
+  </div>
+
+  <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Visibility</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Wall Type</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Blocks Count</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        <% @walls.each do |wall| %>
+          <tr>
+            <td class="px-6 py-4 whitespace-nowrap"><%= wall.name %></td>
+            <td class="px-6 py-4 whitespace-nowrap"><%= wall.visibility %></td>
+            <td class="px-6 py-4 whitespace-nowrap"><%= wall.walltype %></td>
+            <td class="px-6 py-4 whitespace-nowrap"><%= wall.blocks.count %></td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+              <%= link_to 'View', wall, class: 'text-indigo-600 hover:text-indigo-900 mr-2' %>
+              <%= link_to 'Edit', edit_wall_path(wall), class: 'text-indigo-600 hover:text-indigo-900 mr-2' %>
+              <%= link_to 'Delete', wall, method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-red-600 hover:text-red-900' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

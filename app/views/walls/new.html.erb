@@ -1,0 +1,9 @@
+<div class="container mx-auto px-4">
+  <h1 class="text-2xl font-bold mb-4">New Wall</h1>
+
+  <%= render 'form', wall: @wall %>
+
+  <div class="mt-4">
+    <%= link_to 'Back', walls_path, class: 'bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded' %>
+  </div>
+</div>

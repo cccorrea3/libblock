@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_15_083401) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_15_203001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,6 +46,13 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_15_083401) do
     t.bigint "station_id", null: false
     t.index ["block_id", "station_id"], name: "index_blocks_stations_on_block_id_and_station_id"
     t.index ["station_id", "block_id"], name: "index_blocks_stations_on_station_id_and_block_id"
+  end
+
+  create_table "blocks_walls", id: false, force: :cascade do |t|
+    t.bigint "wall_id", null: false
+    t.bigint "block_id", null: false
+    t.index ["block_id", "wall_id"], name: "index_blocks_walls_on_block_id_and_wall_id"
+    t.index ["wall_id", "block_id"], name: "index_blocks_walls_on_wall_id_and_block_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -149,6 +156,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_15_083401) do
     t.string "view_type"
     t.boolean "is_active", default: true
     t.integer "sort_order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "walls", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.string "visibility"
+    t.string "walltype"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
