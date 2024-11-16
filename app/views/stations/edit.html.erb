@@ -1,36 +1,10 @@
-<h3 class="text-xl font-semibold mb-4">Edit Station</h3>
+<div class="container mx-auto px-4">
+  <h1 class="text-2xl font-bold mb-4">Editing Station</h1>
 
-<%= form_with(model: @station, local: true, class: 'space-y-4') do |form| %>
-  <% if @station.errors.any? %>
-    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-      <strong class="font-bold">Error!</strong>
-      <ul>
-        <% @station.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'form', station: @station %>
 
-  <div>
-    <%= form.label :name, class: 'block text-sm font-medium text-gray-700' %>
-    <%= form.text_field :name, class: 'mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md' %>
+  <div class="mt-4 flex space-x-2">
+    <%= link_to 'Show', @station, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' %>
+    <%= link_to 'Back', stations_path, class: 'bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded' %>
   </div>
-
-  <div>
-    <%= form.label :metro_line_ids, 'Associated Lines', class: 'block text-sm font-medium text-gray-700' %>
-    <%= form.collection_check_boxes :metro_line_ids, MetroLine.all, :id, :name do |b| %>
-      <div class="flex items-center">
-        <%= b.check_box(class: 'focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded') %>
-        <%= b.label(class: 'ml-2 block text-sm text-gray-900') %>
-      </div>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form.submit 'Update Station', class: 'inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' %>
-  </div>
-<% end %>
-
-<%= link_to 'Show', @station, class: 'mt-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2' %>
-<%= link_to 'Back', stations_path, class: 'mt-4 inline-block bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded' %>
+</div>
