@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'dashboard#index'
+  #root 'dashboard#index'
 
   resources :metro_lines
   resources :stations
@@ -14,4 +14,18 @@ Rails.application.routes.draw do
   resources :categories
   resources :workflows
   resources :walls
+  
+  # New authentication routes
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create', as: 'sessions'
+  delete '/logout', to: 'sessions#destroy', as: 'logout'
+
+  get '/signup', to: 'users#new'
+  resources :users, only: [:create, :edit, :update]
+
+  # Set root path to login page
+  root 'sessions#new'
+
+  # Dashboard route
+  get '/dashboard', to: 'stations#index', as: 'dashboard'
 end

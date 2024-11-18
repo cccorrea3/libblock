@@ -1,43 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Metro Admin</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
   </head>
 
-  <body>
+  <body class="bg-gray-100">
     <div class="flex h-screen bg-gray-100">
       <!-- Side Menu -->
       <aside class="w-64 bg-gray-800 text-white p-4">
         <h1 class="text-2xl font-bold mb-6">Metro Admin</h1>
         <nav>
-          <%= link_to root_path, class: "block py-2 px-4 text-sm hover:bg-gray-700 rounded" do %>
-            <i class="fas fa-home mr-2"></i> Dashboard
+          <%= link_to root_path, class: "flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 rounded-lg mb-2" do %>
+            <i class="fas fa-home mr-2"></i>
+            <span>Dashboard</span>
           <% end %>
-          <%= link_to metro_lines_path, class: "block py-2 px-4 text-sm hover:bg-gray-700 rounded" do %>
-            <i class="fas fa-subway mr-2"></i> Lines
+		  
+          <%= link_to metro_lines_path, class: "flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 rounded-lg mb-2" do %>
+            <i class="fas fa-subway mr-2"></i>
+            <span>Lines</span>
           <% end %>
-          <%= link_to stations_path, class: "block py-2 px-4 text-sm hover:bg-gray-700 rounded" do %>
-            <i class="fas fa-map-marker-alt mr-2"></i> Stations
+          <%= link_to stations_path, class: "flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 rounded-lg mb-2" do %>
+            <i class="fas fa-map-marker-alt mr-2"></i>
+            <span>Stations</span>
           <% end %>
-          <%= link_to blocks_path, class: "block py-2 px-4 text-sm hover:bg-gray-700 rounded" do %>
-            <i class="fas fa-cube mr-2"></i> Blocks
+          <%= link_to blocks_path, class: "flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 rounded-lg mb-2" do %>
+            <i class="fas fa-cube mr-2"></i>
+            <span>Blocks</span>
           <% end %>
-          <%= link_to users_path, class: "block py-2 px-4 text-sm hover:bg-gray-700 rounded" do %>
-            <i class="fas fa-users mr-2"></i> Users
+		  <%= link_to walls_path, class: "flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 rounded-lg mb-2" do %>
+            <i class="fas fa-cube mr-2"></i>
+            <span>Walls</span>
           <% end %>
-          <%= link_to groups_path, class: "block py-2 px-4 text-sm hover:bg-gray-700 rounded" do %>
-            <i class="fas fa-user-friends mr-2"></i> Groups
+          <%= link_to users_path, class: "flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 rounded-lg mb-2" do %>
+            <i class="fas fa-users mr-2"></i>
+            <span>Users</span>
           <% end %>
-          <%= link_to workflows_path, class: "block py-2 px-4 text-sm hover:bg-gray-700 rounded" do %>
-            <i class="fas fa-project-diagram mr-2"></i> Workflow
+          <%= link_to groups_path, class: "flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 rounded-lg mb-2" do %>
+            <i class="fas fa-user-friends mr-2"></i>
+            <span>Groups</span>
           <% end %>
+          <%= link_to workflows_path, class: "flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 rounded-lg mb-2" do %>
+            <i class="fas fa-project-diagram mr-2"></i>
+            <span>Workflows</span>
+          <% end %>
+		  <%= link_to environments_path, class: "flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 rounded-lg mb-2" do %>
+            <i class="fas fa-project-diagram mr-2"></i>
+            <span>Environment</span>
+          <% end %>
+		  <%= link_to roles_path, class: "flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 rounded-lg mb-2" do %>
+            <i class="fas fa-project-diagram mr-2"></i>
+            <span>Role</span>
+          <% end %>
+		  <%= link_to views_path, class: "flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 rounded-lg mb-2" do %>
+            <i class="fas fa-project-diagram mr-2"></i>
+            <span>Views</span>
+          <% end %>
+		  <%= link_to applications_path, class: "flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 rounded-lg mb-2" do %>
+            <i class="fas fa-project-diagram mr-2"></i>
+            <span>Applications</span>
+          <% end %>
+		  <%= link_to labels_path, class: "flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 rounded-lg mb-2" do %>
+            <i class="fas fa-project-diagram mr-2"></i>
+            <span>Labels</span>
+          <% end %>
+		  <%= link_to categories_path, class: "flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 rounded-lg mb-2" do %>
+            <i class="fas fa-project-diagram mr-2"></i>
+            <span>Categories</span>
+          <% end %>
+          
         </nav>
       </aside>
 
@@ -49,5 +87,7 @@
         </div>
       </main>
     </div>
+
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </body>
 </html>

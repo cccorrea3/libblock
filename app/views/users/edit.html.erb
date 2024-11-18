@@ -1,10 +1,25 @@
-<div class="container mx-auto px-4">
-  <h1 class="text-2xl font-bold mb-4">Editing User</h1>
+<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full space-y-8">
+    <div>
+      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        Change your password
+      </h2>
+    </div>
+    <%= form_for @user, html: { class: "mt-8 space-y-6" } do |f| %>
+      <div class="rounded-md shadow-sm -space-y-px">
+        <div>
+          <%= f.label :password, 'New Password', class: "sr-only" %>
+          <%= f.password_field :password, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm", placeholder: "New Password" %>
+        </div>
+        <div>
+          <%= f.label :password_confirmation, 'Confirm New Password', class: "sr-only" %>
+          <%= f.password_field :password_confirmation, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm", placeholder: "Confirm New Password" %>
+        </div>
+      </div>
 
-  <%= render 'form', user: @user %>
-
-  <div class="mt-4">
-    <%= link_to 'Show', @user, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2' %>
-    <%= link_to 'Back', users_path, class: 'bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded' %>
+      <div>
+        <%= f.submit "Change Password", class: "group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+      </div>
+    <% end %>
   </div>
 </div>
