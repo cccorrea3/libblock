@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :workflows
   resources :walls
   
+  
   # New authentication routes
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create', as: 'sessions'
@@ -27,5 +28,5 @@ Rails.application.routes.draw do
   root 'sessions#new'
 
   # Dashboard route
-  get '/dashboard', to: 'stations#index', as: 'dashboard'
+  get '/dashboard', to: 'dashboard#index', as: 'dashboard'
 end

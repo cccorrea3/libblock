@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
 
+  layout :set_layout
+
   private
 
   def current_user
@@ -15,5 +17,9 @@ class ApplicationController < ActionController::Base
     unless logged_in?
       redirect_to login_path, alert: 'You must be logged in to access this page.'
     end
+  end
+
+  def set_layout
+    logged_in? ? 'authenticated' : 'application'
   end
 end

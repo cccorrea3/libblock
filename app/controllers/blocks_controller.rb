@@ -1,7 +1,6 @@
 class BlocksController < ApplicationController
   before_action :require_login
   before_action :set_block, only: [:show, :edit, :update, :destroy]
-  before_action :set_stations, only: [:new, :create, :edit, :update]
 
   def index
     @blocks = Block.all
@@ -14,16 +13,17 @@ class BlocksController < ApplicationController
     @block = Block.new
   end
 
+  def edit
+  end
+
   def create
     @block = Block.new(block_params)
+
     if @block.save
       redirect_to @block, notice: 'Block was successfully created.'
     else
       render :new
     end
-  end
-
-  def edit
   end
 
   def update

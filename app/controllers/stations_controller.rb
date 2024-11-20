@@ -11,11 +11,9 @@ class StationsController < ApplicationController
 
   def new
     @station = Station.new
-    @blocks = Block.all
   end
 
   def edit
-    @blocks = Block.all
   end
 
   def create
@@ -24,7 +22,6 @@ class StationsController < ApplicationController
     if @station.save
       redirect_to @station, notice: 'Station was successfully created.'
     else
-      @blocks = Block.all
       render :new
     end
   end
@@ -33,7 +30,6 @@ class StationsController < ApplicationController
     if @station.update(station_params)
       redirect_to @station, notice: 'Station was successfully updated.'
     else
-      @blocks = Block.all
       render :edit
     end
   end
