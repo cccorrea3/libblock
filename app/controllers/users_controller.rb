@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :require_login, only: [:edit, :update]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -15,18 +16,21 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to @user, notice: 'User was successfully created.'
+      session[:user_id] = @user.id
+      redirect_to dashboard_path, notice: 'Account created successfully!'
     else
       render :new
     end
   end
 
   def edit
+    @user = current_user
   end
 
   def update
+    @user = current_user
     if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
+      redirect_to dashboard_path, notice: 'Password updated successfully!'
     else
       render :edit
     end
@@ -44,6 +48,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :role_id, group_ids: [])
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
 end
